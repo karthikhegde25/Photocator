@@ -1,0 +1,13 @@
+<resources>
+    <style name="Theme.Photocator.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#070B13</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_icon</item>
+        <item name="postSplashScreenTheme">@style/Theme.Photocator</item>
+    </style>
+    <style name="Theme.Photocator" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+    </style>
+</resources>

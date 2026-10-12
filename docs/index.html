@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Photocator – Every photo, stamped with where it happened</title>
+<meta name="description" content="Photocator is a free, open-source Android camera that stamps photos and videos with GPS coordinates, place name, address, map, weather and compass heading.">
+<link rel="icon" href="logo.png">
+<style>
+:root{
+  --bg:#fbfbfd; --bg2:#f5f5f7; --card:#ffffff; --text:#1d1d1f; --dim:#6e6e73; --line:#d2d2d7;
+  --blue:#0071e3; --blue-h:#0077ed; --dark:#000; --hero:#05070d;
+}
+@media (prefers-color-scheme: dark){
+  :root{--bg:#000;--bg2:#111113;--card:#1c1c1e;--text:#f5f5f7;--dim:#a1a1a6;--line:#38383a;--blue:#2997ff;--blue-h:#40a3ff}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Inter,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.47;letter-spacing:-.011em;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:980px;margin:0 auto;padding:0 22px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;height:48px;background:rgba(251,251,253,.8);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
+@media (prefers-color-scheme: dark){nav{background:rgba(0,0,0,.72)}}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:48px}
+nav .brand{display:flex;align-items:center;gap:8px;font-weight:600;color:var(--text)}
+nav .brand img{width:24px;height:24px;border-radius:6px}
+nav ul{display:flex;gap:26px;list-style:none;font-size:12px}
+nav ul a{color:var(--dim)}nav ul a:hover{color:var(--text);text-decoration:none}
+@media(max-width:640px){nav ul li:not(:last-child){display:none}}
+
+/* hero */
+.hero{text-align:center;padding:84px 22px 72px;background:radial-gradient(1200px 500px at 50% -10%,rgba(0,113,227,.22),transparent 60%),var(--hero);color:#f5f5f7}
+.hero img.logo{width:132px;height:132px;border-radius:30px;box-shadow:0 20px 60px rgba(0,113,227,.35),0 0 0 1px rgba(255,255,255,.08)}
+.hero h1{font-size:clamp(40px,7vw,80px);line-height:1.05;letter-spacing:-.03em;font-weight:700;margin:28px auto 0;max-width:820px}
+.hero h1 span{background:linear-gradient(90deg,#5ac8fa,#0a84ff 45%,#ff453a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:clamp(18px,2.4vw,26px);color:#a1a1a6;max-width:700px;margin:18px auto 0;line-height:1.3;letter-spacing:-.015em}
+.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.btn{display:inline-block;padding:12px 24px;border-radius:980px;font-size:17px;font-weight:500}
+.btn.primary{background:#0071e3;color:#fff}.btn.primary:hover{background:#0077ed;text-decoration:none}
+.badge{display:inline-flex;align-items:center}.badge img{height:48px;width:auto;display:block;border-radius:8px}.badge:hover img{opacity:.88}
+.btn.ghost{color:#2997ff;border:1px solid #2997ff}.btn.ghost:hover{background:rgba(41,151,255,.12);text-decoration:none}
+.hero p.meta{margin-top:18px;font-size:13px;color:#86868b;max-width:none}
+
+/* tag preview */
+.tag{margin:56px auto 0;max-width:440px;display:flex;border-radius:14px;overflow:hidden;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.12);text-align:left;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.tag .map{width:116px;flex:none;background:linear-gradient(135deg,#1f6f43,#1b4f8f 55%,#0d2b52);position:relative}
+.tag .map:before{content:"";position:absolute;inset:0;background:linear-gradient(35deg,transparent 44%,rgba(255,255,255,.35) 45% 47%,transparent 48%),linear-gradient(120deg,transparent 58%,rgba(255,255,255,.28) 59% 61%,transparent 62%)}
+.tag .map i{position:absolute;left:50%;top:44%;width:22px;height:22px;background:#ff453a;border-radius:50% 50% 50% 0;transform:translate(-50%,-50%) rotate(-45deg)}
+.tag .map i:after{content:"";position:absolute;inset:6px;background:#3a0b0b;border-radius:50%}
+.tag .txt{padding:12px 14px;font-size:12px;color:#e6e6e6;line-height:1.4}
+.tag .txt b{display:block;font-size:15px;color:#fff;margin-bottom:2px}
+.tag .row{display:flex;gap:12px;margin-top:6px;color:#fff;font-weight:600;font-size:12px;flex-wrap:wrap}
+
+/* sections */
+section{padding:96px 0}
+section.alt{background:var(--bg2)}
+.eyebrow{font-size:14px;font-weight:600;color:var(--blue);text-transform:none;margin-bottom:10px}
+h2{font-size:clamp(32px,5vw,56px);line-height:1.08;letter-spacing:-.028em;font-weight:700;max-width:760px}
+.lead{font-size:clamp(18px,2.2vw,24px);color:var(--dim);line-height:1.3;max-width:700px;margin-top:18px;letter-spacing:-.012em}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;margin-top:52px}
+.card{background:var(--card);border-radius:22px;padding:30px 28px;border:1px solid var(--line)}
+section:not(.alt) .card{background:var(--bg2);border-color:transparent}
+.card .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:22px;margin-bottom:18px;background:rgba(0,113,227,.12)}
+.card h3{font-size:21px;letter-spacing:-.02em;margin-bottom:8px}
+.card p{font-size:15px;color:var(--dim);line-height:1.5}
+.modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:48px}
+.mode{background:#05070d;color:#f5f5f7;border-radius:22px;padding:34px 26px;text-align:center}
+.mode svg{width:44px;height:44px;margin-bottom:14px;stroke:#5ac8fa;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.mode svg .f{fill:#5ac8fa;stroke:none}
+.mode h3{font-size:22px;margin-bottom:6px}.mode p{font-size:14px;color:#a1a1a6}
+.steps{counter-reset:s;display:grid;gap:18px;margin-top:48px}
+.step{display:flex;gap:20px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px 26px}
+.step:before{counter-increment:s;content:counter(s);flex:none;width:36px;height:36px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:700}
+.step h3{font-size:18px;margin-bottom:4px}.step p{color:var(--dim);font-size:15px}
+.specs{margin-top:44px;border-top:1px solid var(--line)}
+.specs div{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--line);font-size:16px}
+.specs span:first-child{color:var(--dim)}.specs span:last-child{text-align:right;font-weight:500}
+.policy{max-width:760px;margin-top:40px}
+.policy h3{font-size:22px;margin:34px 0 8px;letter-spacing:-.02em}
+.policy p,.policy li{font-size:16px;color:var(--dim);line-height:1.6}
+.policy ul{padding-left:22px;margin-top:6px}
+.policy li{margin:6px 0}.policy strong{color:var(--text)}
+footer{background:var(--bg2);padding:34px 0 48px;font-size:12px;color:var(--dim);border-top:1px solid var(--line)}
+footer .links{display:flex;gap:22px;flex-wrap:wrap;margin-bottom:14px}
+footer a{color:var(--dim)}footer a:hover{color:var(--text)}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="brand" href="#top"><img src="logo.png" alt="">Photocator</a>
+  <ul>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#modes">Modes</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#privacy">Privacy</a></li>
+    <li><a href="https://github.com/karthikhegde25/Photocator">GitHub</a></li>
+  </ul>
+</div></nav>
+
+<header class="hero" id="top">
+  <img class="logo" src="logo.png" alt="Photocator app icon">
+  <h1>Every photo, stamped with <span>where it happened.</span></h1>
+  <p>Photocator is a free, open-source Android camera that adds the place, the map, the weather and the time to every photo and video you take.</p>
+  <div class="cta">
+    <a class="btn primary" href="https://github.com/karthikhegde25/Photocator/releases/download/1.0/Photocator.apk" download="Photocator.apk">Download APK</a>
+    <a class="badge" href="https://github.com/karthikhegde25/Photocator/releases/tag/1.0" aria-label="Get it on GitHub"><img src="get-it-on-github.png" alt="Get it on GitHub" height="48"></a>
+  </div>
+  <p class="meta">Version 1.0 · Android 8.0 or later · Free, no ads, no account</p>
+
+  <div class="tag" aria-label="Example geotag">
+    <div class="map"><i></i></div>
+    <div class="txt">
+      <b>Bengaluru, Karnataka, India</b>
+      MG Road, Shivajinagar, Bengaluru 560001
+      <div class="row"><span>12.9716° N</span><span>77.5946° E</span><span>28 °C</span><span>NE 42°</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="features">
+  <div class="wrap">
+    <p class="eyebrow">Features</p>
+    <h2>Proof of place, built into the shutter.</h2>
+    <p class="lead">Take a photo and the geotag is part of it: precise, readable and yours to arrange.</p>
+    <div class="grid">
+      <div class="card"><div class="ic">📍</div><h3>Live geotag</h3><p>Coordinates, Plus Code, altitude, speed, place name and full address, drawn right on the viewfinder before you shoot.</p></div>
+      <div class="card"><div class="ic">🗺️</div><h3>Map thumbnail</h3><p>A map of the exact spot in 11 styles, from satellite and streets to topographic and dark gray.</p></div>
+      <div class="card"><div class="ic">⛅</div><h3>Weather &amp; compass</h3><p>Temperature, conditions, humidity, wind, magnetic field and compass heading, switchable with one toggle.</p></div>
+      <div class="card"><div class="ic">🎬</div><h3>Geotagged video</h3><p>Record video with the geotag burned into every frame, rotated to match how you hold the phone.</p></div>
+      <div class="card"><div class="ic">🖼️</div><h3>Add to any photo</h3><p>Pick a PNG or JPG from your gallery, choose a location on the map and stamp it after the fact.</p></div>
+      <div class="card"><div class="ic">✏️</div><h3>Edit before saving</h3><p>Review every shot, change the address, add a note, move the geotag or put it in a strip below the photo.</p></div>
+      <div class="card"><div class="ic">🏷️</div><h3>Your watermark</h3><p>Upload your own logos and show one in the corner of the geotag, globally or for a single photo.</p></div>
+      <div class="card"><div class="ic">📐</div><h3>Size &amp; position</h3><p>Drag and resize the geotag exactly where you want it, and save it as your default.</p></div>
+      <div class="card"><div class="ic">🎛️</div><h3>Camera controls</h3><p>Zoom dial, flash, timer, grid, aspect ratio, image quality and volume-button shutter or zoom.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="modes">
+  <div class="wrap">
+    <p class="eyebrow">Modes</p>
+    <h2>Photo. Night. Video.</h2>
+    <p class="lead">Three modes, one tap apart, all with the same geotag.</p>
+    <div class="modes">
+      <div class="mode">
+        <svg viewBox="0 0 24 24"><path d="M3.5 8h3.7l1.6-2.5h6.4L16.8 8h3.7v11h-17z"/><circle cx="12" cy="13.2" r="3.6"/></svg>
+        <h3>Photo</h3><p>Sharp everyday shots with the geotag baked in.</p>
+      </div>
+      <div class="mode">
+        <svg viewBox="0 0 24 24"><path class="f" d="M12.4 3.6A7.5 7.5 0 1 0 19 15.6 8.6 8.6 0 0 1 12.4 3.6z"/><path class="f" d="M18.5 13.4l1.2 2.4 2.4 1.2-2.4 1.2-1.2 2.4-1.2-2.4-2.4-1.2 2.4-1.2z"/></svg>
+        <h3>Night</h3><p>Uses your phone's night extension, or a low-light boost where it isn't available.</p>
+      </div>
+      <div class="mode">
+        <svg viewBox="0 0 24 24"><rect x="2.5" y="6.5" width="13" height="11" rx="2.8"/><path class="f" d="M15.5 10.8l5.8-3.4v9.2l-5.8-3.4z"/></svg>
+        <h3>Video</h3><p>Record with sound and a live, rotating geotag.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <p class="eyebrow">How it works</p>
+    <h2>Point. Shoot. Done.</h2>
+    <div class="steps">
+      <div class="step"><div><h3>Allow camera, photos and location</h3><p>Photocator asks once, in order, and explains what each permission is for.</p></div></div>
+      <div class="step"><div><h3>Wait for the GPS lock</h3><p>The geotag appears over the viewfinder as soon as a position is found. GPS is preferred, with network location as backup.</p></div></div>
+      <div class="step"><div><h3>Shoot, review, save</h3><p>Check the photo, tweak the geotag if you like, and save. Files go to Pictures/Photocator and Movies/Photocator on your phone.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <p class="eyebrow">Tech specs</p>
+    <h2>The details.</h2>
+    <div class="specs">
+      <div><span>Version</span><span>1.0</span></div>
+      <div><span>Developer</span><span>Karthik Hegde</span></div>
+      <div><span>Requires</span><span>Android 8.0 (API 26) or later</span></div>
+      <div><span>Price</span><span>Free</span></div>
+      <div><span>License</span><span><a href="https://github.com/karthikhegde25/Photocator/blob/main/LICENSE">GNU GPL v3.0</a></span></div>
+      <div><span>Map data</span><span>Esri · © OpenStreetMap contributors</span></div>
+      <div><span>Weather</span><span>Open-Meteo</span></div>
+      <div><span>Source code</span><span><a href="https://github.com/karthikhegde25/Photocator">github.com/karthikhegde25/Photocator</a></span></div>
+    </div>
+  </div>
+</section>
+
+<section id="privacy">
+  <div class="wrap">
+    <p class="eyebrow">Privacy policy</p>
+    <h2>Your photos stay on your phone.</h2>
+    <p class="lead">Last updated: October 2026</p>
+    <div class="policy">
+      <h3>What Photocator does not do</h3>
+      <ul>
+        <li>No accounts, no sign-in, no ads and no analytics or tracking tools.</li>
+        <li>The developer does not receive, collect or store your photos, videos, location or any personal data.</li>
+        <li>Nothing you shoot is uploaded to any server run by the developer.</li>
+      </ul>
+
+      <h3>Permissions and why they are needed</h3>
+      <ul>
+        <li><strong>Camera</strong> to take photos and videos.</li>
+        <li><strong>Microphone</strong> to record sound with video. Asked only when you use Video mode.</li>
+        <li><strong>Location</strong> to read your GPS position for the geotag.</li>
+        <li><strong>Photos and media</strong> to save your files and show the last photo and your videos.</li>
+        <li><strong>Internet</strong> for the lookups listed below.</li>
+      </ul>
+
+      <h3>Third-party services</h3>
+      <p>To build the geotag, the app sends your coordinates (or a place you search for) to these public services. They have their own privacy policies:</p>
+      <ul>
+        <li><strong>OpenStreetMap Nominatim and Photon</strong> turn coordinates into a place name and address, and power place search.</li>
+        <li><strong>Open-Meteo</strong> provides the weather for your coordinates.</li>
+        <li><strong>Esri and OpenStreetMap tile servers</strong> provide the map images. Tile requests reveal the map area you are viewing.</li>
+      </ul>
+      <p>Your phone's IP address is visible to these services, as with any internet request. The app does not send your photos to them.</p>
+
+      <h3>Data on your device</h3>
+      <p>Settings, your watermark images and cached map tiles are stored locally in the app's private storage. Photos and videos are saved in your gallery folders and can be deleted at any time. Uninstalling the app removes its private data.</p>
+
+      <h3>Sharing</h3>
+      <p>Your geotagged photos contain your location. Think before posting them publicly, since anyone who sees them can see where they were taken.</p>
+
+      <h3>Children</h3>
+      <p>Photocator does not knowingly collect any information from anyone, including children.</p>
+
+      <h3>Changes and contact</h3>
+      <p>If this policy changes, the updated version will be published on this page. For questions, open an issue at <a href="https://github.com/karthikhegde25/Photocator/issues">github.com/karthikhegde25/Photocator/issues</a>.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="https://github.com/karthikhegde25/Photocator">Source code</a>
+      <a href="https://github.com/karthikhegde25/Photocator/releases/tag/1.0">Releases</a>
+      <a href="https://github.com/karthikhegde25/Photocator/issues">Report an issue</a>
+      <a href="#privacy">Privacy policy</a>
+    </div>
+    <p>Photocator 1.0 · Developed by Karthik Hegde · Free software under the GNU GPL v3.0. Map imagery © Esri and its data providers. Map data © OpenStreetMap contributors. Weather by Open-Meteo.</p>
+    <p style="margin-top:8px">Android is a trademark of Google LLC. Photocator is an independent app.</p>
+  </div>
+</footer>
+</body>
+</html>
