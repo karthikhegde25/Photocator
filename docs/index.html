@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Photocator – Free Geotag Camera App for Android | GPS Map, Address &amp; QR Code on Photos</title>
+<meta name="description" content="Photocator is a free, open-source geotag camera for Android. Stamp photos and videos with GPS coordinates, address, map, date, weather and a QR code of the location. No ads, no tracking.">
+<meta name="keywords" content="geotag camera, GPS camera app, geotag photos, location stamp camera, GPS map camera, timestamp camera, QR code location photo, open source camera Android, Photocator">
+<meta name="author" content="Karthik Hegde">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="theme-color" content="#0b1220">
+<link rel="canonical" href="https://karthikhegde25.github.io/Photocator/">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Photocator">
+<meta property="og:title" content="Photocator – Free Geotag Camera for Android">
+<meta property="og:description" content="Stamp every photo and video with GPS, address, map, date and a QR code of the location. Free, open source, no ads.">
+<meta property="og:url" content="https://karthikhegde25.github.io/Photocator/">
+<meta property="og:image" content="https://karthikhegde25.github.io/Photocator/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Photocator geotag camera app for Android">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Photocator – Free Geotag Camera for Android">
+<meta name="twitter:description" content="GPS, address, map and QR code stamped on every photo and video. Free and open source.">
+<meta name="twitter:image" content="https://karthikhegde25.github.io/Photocator/og-image.jpg">
+<link rel="preload" as="image" href="screens/camera.webp" type="image/webp">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "@id": "https://karthikhegde25.github.io/Photocator/#app",
+ "name": "Photocator",
+ "alternateName": [
+  "Photocator geotag camera",
+  "Photocator GPS camera"
+ ],
+ "description": "Free, open-source Android geotag camera that stamps photos and videos with GPS coordinates, place name, address, map, weather, compass heading and an optional QR code of the location.",
+ "applicationCategory": "PhotographyApplication",
+ "applicationSubCategory": "Camera",
+ "operatingSystem": "Android 8.0 or later",
+ "softwareVersion": "1.0",
+ "url": "https://karthikhegde25.github.io/Photocator/",
+ "downloadUrl": "https://github.com/karthikhegde25/Photocator/releases/download/1.0/Photocator.apk",
+ "installUrl": "https://github.com/karthikhegde25/Photocator/releases/tag/1.0",
+ "image": "https://karthikhegde25.github.io/Photocator/og-image.jpg",
+ "screenshot": [
+  "https://karthikhegde25.github.io/Photocator/screens/camera.jpg",
+  "https://karthikhegde25.github.io/Photocator/screens/geotag-qr-settings.jpg",
+  "https://karthikhegde25.github.io/Photocator/screens/pick-location.jpg"
+ ],
+ "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+ "isAccessibleForFree": true,
+ "offers": {
+  "@type": "Offer",
+  "price": "0",
+  "priceCurrency": "USD",
+  "availability": "https://schema.org/InStock"
+ },
+ "author": {
+  "@type": "Person",
+  "name": "Karthik Hegde",
+  "url": "https://github.com/karthikhegde25"
+ },
+ "featureList": [
+  "Live geotag over the camera viewfinder",
+  "GPS coordinates, Plus Code, place name and full address on every photo",
+  "Geotag burned into video",
+  "Add one geotag to many existing photos at once",
+  "QR code of the location with custom colours",
+  "Custom watermark logos",
+  "Saved locations",
+  "Map providers: Esri, OpenStreetMap, OpenTopoMap",
+  "Weather, compass and magnetic field",
+  "Night mode",
+  "No ads, no accounts, no tracking"
+ ],
+ "keywords": "geotag camera, GPS camera, geotag photos, location stamp, GPS map camera, timestamp camera, Android, open source"
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebSite",
+ "@id": "https://karthikhegde25.github.io/Photocator/#site",
+ "url": "https://karthikhegde25.github.io/Photocator/",
+ "name": "Photocator",
+ "inLanguage": "en",
+ "publisher": {
+  "@type": "Person",
+  "name": "Karthik Hegde"
+ }
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "What is Photocator?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Photocator is a free, open-source geotag camera app for Android. It stamps every photo and video with your GPS coordinates, place name, full address, a map, the date and time, and optionally the weather, compass heading and a QR code of the location."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is Photocator really free?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Photocator is free software under the GNU GPL v3.0. It has no ads, no accounts, no in-app purchases and no analytics. The full source code is on GitHub."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How do I add a geotag to photos I already have?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Tap the add-photo button on the camera screen and select as many photos as you like from your gallery. Choose one location, from the map picker, a place search, your current position or a saved location, and the same geotag is added to all of them. Place it on the photo or in a strip below it."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I put a QR code of the location on my photos?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. In Settings, choose Watermark or QR code and pick QR code. Scanning it opens the exact location in any maps app. The QR code follows the location of each photo, including edits, and you can set its colour and background colour."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I use my own logo as a watermark?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Upload your logos in Settings and show one in the corner of the geotag, for every photo or just a single one. A watermark and a QR code can't be shown together, so the corner shows one or the other."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What are saved locations?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Saved locations are places you name once, from the map or by search, and reuse on any photo. They appear under Use saved address when you edit a captured photo or add a geotag to existing photos."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Which map providers can I choose?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Esri is the default, with satellite, streets, topographic and more. You can also switch to OpenStreetMap or OpenTopoMap in Settings, and the app then shows that provider's map styles for you to choose from."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does Photocator work without internet?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The camera and GPS work offline, but the address, place name, weather and map images are fetched online. Without a connection the geotag shows your coordinates and whatever was already cached."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does Photocator upload or store my photos?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. Your photos, videos and location stay on your phone. The developer does not receive any of your data. The app only sends coordinates to public map, address and weather services to build the geotag."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Which Android versions are supported?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Photocator needs Android 8.0 (API 26) or later."
+   }
+  }
+ ]
+}
+</script>
+<style>
+:root{--bg:#fff;--bg2:#f5f6f8;--text:#111827;--dim:#5b6472;--line:#e3e6ea;--blue:#1a73e8;--blueH:#1558b8;--card:#fff;--shadow:0 20px 50px rgba(15,23,42,.18)}
+@media (prefers-color-scheme:dark){:root{--bg:#0b1220;--bg2:#101a2e;--text:#f1f5f9;--dim:#9aa7bb;--line:#223049;--blue:#5aa2ff;--blueH:#82b8ff;--card:#131e34;--shadow:0 20px 50px rgba(0,0,0,.55)}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--blue)}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+.alt{background:var(--bg2)}
+h1,h2,h3{line-height:1.15;margin:0 0 12px;letter-spacing:-.02em}
+h1{font-size:clamp(34px,6vw,60px)}
+h2{font-size:clamp(26px,4vw,40px)}
+h3{font-size:20px}
+.eyebrow{color:var(--blue);font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin:0 0 10px}
+.lead{font-size:18px;color:var(--dim);max-width:640px}
+nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.78);backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid var(--line)}
+@media (prefers-color-scheme:dark){nav{background:rgba(11,18,32,.78)}}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+nav .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--text);text-decoration:none}
+nav .brand img{width:28px;height:28px;border-radius:7px}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;align-items:center}
+nav ul a{color:var(--dim);text-decoration:none;font-size:14px}
+nav ul a:hover{color:var(--text)}
+.btn{display:inline-block;background:var(--blue);color:#fff!important;padding:12px 22px;border-radius:999px;font-weight:600;text-decoration:none}
+.btn:hover{background:var(--blueH)}
+.btn.ghost{background:transparent;color:var(--text)!important;border:1.5px solid var(--line)}
+nav .btn{padding:7px 16px;font-size:14px}
+@media(max-width:700px){nav ul li:not(:last-child){display:none}}
+.hero{background:radial-gradient(1200px 500px at 50% -10%,#1d3a73 0%,#0b1220 60%);color:#f1f5f9;padding:64px 0 0;overflow:hidden;text-align:center}
+.hero .lead{color:#b4c0d4;margin:0 auto 26px}
+.hero .eyebrow{color:#7db3ff}
+.hero .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+.hero .ghost{color:#f1f5f9!important;border-color:#3a4a68}
+.hero small{color:#8d9bb3;display:block;margin-bottom:34px}
+.fan{position:relative;height:clamp(330px,62vw,620px);max-width:860px;margin:0 auto}
+.phone{margin:0;border-radius:26px;overflow:hidden;border:6px solid #1c2433;background:#000;box-shadow:var(--shadow)}
+.phone img{width:100%}
+.fan .phone{position:absolute;bottom:0;width:29%}
+.fan .main{left:35.5%;width:29%;z-index:3;transform:translateY(0)}
+.fan .left{left:9%;z-index:2;transform:translateY(8%) rotate(-6deg)}
+.fan .right{right:9%;z-index:2;transform:translateY(8%) rotate(6deg)}
+.fan .phone{border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom:0}
+.show{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.show.rev .phone{order:2}
+.show .phone{max-width:300px;margin:0 auto}
+.show ul{padding-left:20px;color:var(--dim)}
+.show li{margin:6px 0}
+.show li strong{color:var(--text)}
+@media(max-width:760px){.show{grid-template-columns:1fr;gap:28px}.show.rev .phone{order:0}}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;margin-top:30px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.tile p{margin:0;color:var(--dim);font-size:15px}
+.tile .ic{font-size:26px;margin-bottom:8px}
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:28px}
+.steps div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.steps div::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;margin-bottom:10px}
+.steps p{margin:0;color:var(--dim);font-size:15px}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin:10px 0}
+summary{cursor:pointer;font-weight:600}
+details p{margin:10px 0 0;color:var(--dim)}
+table{width:100%;border-collapse:collapse;margin-top:20px}
+td{padding:12px 4px;border-bottom:1px solid var(--line);vertical-align:top}
+td:first-child{color:var(--dim);width:38%}
+.dl{text-align:center}
+.dl .cta{display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:22px}
+.dl img{height:56px;width:auto}
+.policy{max-width:760px}
+.policy h3{margin-top:28px}
+.policy ul{padding-left:20px;color:var(--dim)}
+.policy p{color:var(--dim)}
+footer{border-top:1px solid var(--line);padding:36px 0;color:var(--dim);font-size:14px;text-align:center}
+footer .links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="#top"><img src="favicon.png" alt="Photocator logo" width="28" height="28">Photocator</a>
+  <ul>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#privacy">Privacy</a></li>
+    <li><a class="btn" href="https://github.com/karthikhegde25/Photocator/releases/download/1.0/Photocator.apk">Download</a></li>
+  </ul>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">Free &amp; open-source geotag camera for Android</p>
+    <h1>Every photo, stamped with where and when.</h1>
+    <p class="lead">Photocator puts your GPS location, address, map, date, weather and a scannable QR code right on your photos and videos. No ads. No accounts. No tracking.</p>
+    <div class="cta">
+      <a class="btn" href="https://github.com/karthikhegde25/Photocator/releases/download/1.0/Photocator.apk">Download APK</a>
+      <a class="btn ghost" href="https://github.com/karthikhegde25/Photocator">View source on GitHub</a>
+    </div>
+    <small>Android 8.0+ · Free · GNU GPL v3.0</small>
+    <div class="fan">
+      <figure class="phone left"><picture><source srcset="screens/geotag-qr-settings.webp" type="image/webp"><img src="screens/geotag-qr-settings.jpg" alt="Photocator settings showing geotag size and position, the Watermark or QR code option, QR code colour and background colour with a live QR preview, and map provider and style" width="560" height="1146" fetchpriority="high" decoding="async"></picture></figure>
+      <figure class="phone right"><picture><source srcset="screens/pick-location.webp" type="image/webp"><img src="screens/pick-location.jpg" alt="Photocator location picker with a place search box, a satellite map with a pin and the selected address and coordinates" width="560" height="1117" fetchpriority="high" decoding="async"></picture></figure>
+      <figure class="phone main"><picture><source srcset="screens/camera.webp" type="image/webp"><img src="screens/camera.jpg" alt="Photocator camera screen with a live geotag over the viewfinder showing a map thumbnail, place name, address, latitude and longitude, Plus Code and date, above the Photo, Night and Video modes" width="560" height="1197" fetchpriority="high" decoding="async"></picture></figure>
+    </div>
+  </div>
+</header>
+
+<section id="features">
+  <div class="wrap">
+    <div class="show">
+      <figure class="phone "><picture><source srcset="screens/camera.webp" type="image/webp"><img src="screens/camera.jpg" alt="Photocator camera screen with a live geotag over the viewfinder showing a map thumbnail, place name, address, latitude and longitude, Plus Code and date, above the Photo, Night and Video modes" width="560" height="1197" loading="lazy" decoding="async"></picture></figure>
+      <div>
+        <p class="eyebrow">Camera</p>
+        <h2>A live geotag on the viewfinder.</h2>
+        <p class="lead">See exactly what will be stamped before you shoot. The geotag updates as you move, and the same design is burned into photos and videos.</p>
+        <ul>
+          <li><strong>Photo, Night and Video</strong> modes, with a low-light fix so video no longer goes dark.</li>
+          <li><strong>Map, place name, full address, coordinates, Plus Code and date</strong> on every shot.</li>
+          <li><strong>Saved locations</strong> and refresh buttons beside the shutter row.</li>
+          <li><strong>Zoom dial</strong>, flash, timer and touch-to-capture.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="show rev">
+      <figure class="phone "><picture><source srcset="screens/geotag-qr-settings.webp" type="image/webp"><img src="screens/geotag-qr-settings.jpg" alt="Photocator settings showing geotag size and position, the Watermark or QR code option, QR code colour and background colour with a live QR preview, and map provider and style" width="560" height="1146" loading="lazy" decoding="async"></picture></figure>
+      <div>
+        <p class="eyebrow">Watermark &amp; QR code</p>
+        <h2>Make the geotag yours.</h2>
+        <p class="lead">Resize and move the geotag, round or sharpen its corners, and flip the map to either side.</p>
+        <ul>
+          <li><strong>QR code of the location</strong> that opens in any maps app, with your own colours.</li>
+          <li><strong>Custom watermark logo</strong> in the corner, or a QR code instead: one at a time.</li>
+          <li><strong>Rounded corners</strong> by default, or sharp if you prefer.</li>
+          <li><strong>Map on left or right</strong>, and the watermark mirrors to the other side.</li>
+          <li><strong>Map providers:</strong> Esri, OpenStreetMap and OpenTopoMap, each with its own styles.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="show">
+      <figure class="phone "><picture><source srcset="screens/pick-location.webp" type="image/webp"><img src="screens/pick-location.jpg" alt="Photocator location picker with a place search box, a satellite map with a pin and the selected address and coordinates" width="560" height="1117" loading="lazy" decoding="async"></picture></figure>
+      <div>
+        <p class="eyebrow">Location</p>
+        <h2>Pick and edit your location.</h2>
+        <p class="lead">Wrong place? Search for it or drop a pin on the map, and the address, coordinates and QR code all update to match.</p>
+        <ul>
+          <li><strong>Search or tap the map</strong> to set the exact spot.</li>
+          <li><strong>Use saved address</strong> to reuse the places you visit often.</li>
+          <li><strong>Add a geotag to many existing photos</strong> at once with one shared location.</li>
+          <li><strong>Edit after you shoot</strong> before the photo is saved.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <p class="eyebrow">Everything included</p>
+    <h2>Built for work, travel and proof of place.</h2>
+    <div class="grid">
+      <div class="tile"><div class="ic">📍</div><h3>GPS geotag</h3><p>Coordinates, Plus Code, place name and address on photos and video.</p></div>
+      <div class="tile"><div class="ic">🔳</div><h3>Location QR code</h3><p>Scan to open the exact spot. Custom colours, always matches the edited location.</p></div>
+      <div class="tile"><div class="ic">🖼️</div><h3>Many photos at once</h3><p>Import several photos and give them one common geotag, on the photo or below it.</p></div>
+      <div class="tile"><div class="ic">⭐</div><h3>Saved locations</h3><p>Save named places from the map or search and reuse them anywhere.</p></div>
+      <div class="tile"><div class="ic">🗺️</div><h3>Three map providers</h3><p>Esri, OpenStreetMap and OpenTopoMap with satellite, street and terrain styles.</p></div>
+      <div class="tile"><div class="ic">🌙</div><h3>Night and low light</h3><p>Night mode for photos and a brighter low-light video pipeline.</p></div>
+      <div class="tile"><div class="ic">🧭</div><h3>Weather and sensors</h3><p>Optional weather, compass heading and magnetic field in the geotag.</p></div>
+      <div class="tile"><div class="ic">📤</div><h3>Share and delete</h3><p>A gallery-style viewer with back, share and delete for each photo and video.</p></div>
+      <div class="tile"><div class="ic">🔒</div><h3>Private by design</h3><p>No ads, accounts or analytics. Your files never leave your phone.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">How it works</p>
+    <h2>Three taps to a geotagged photo.</h2>
+    <div class="steps">
+      <div><h3>Open the camera</h3><p>Photocator finds your GPS position and builds the geotag live.</p></div>
+      <div><h3>Shoot</h3><p>Take a photo, night shot or video. Edit the location afterwards if needed.</p></div>
+      <div><h3>Save and share</h3><p>The geotag is stamped into the file and saved to your gallery.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="download">
+  <div class="wrap dl">
+    <h2>Get Photocator</h2>
+    <p class="lead" style="margin:0 auto">Free forever. Install the APK from GitHub and allow installs from your browser when asked.</p>
+    <div class="cta">
+      <a href="https://github.com/karthikhegde25/Photocator/releases/download/1.0/Photocator.apk"><img src="get-it-on-github.png" alt="Get Photocator on GitHub" width="190" height="56" loading="lazy"></a>
+      <a class="btn" href="https://github.com/karthikhegde25/Photocator/releases/download/1.0/Photocator.apk">Download APK (1.0)</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap policy">
+    <p class="eyebrow">FAQ</p>
+    <h2>Questions, answered.</h2>
+<details><summary>What is Photocator?</summary><p>Photocator is a free, open-source geotag camera app for Android. It stamps every photo and video with your GPS coordinates, place name, full address, a map, the date and time, and optionally the weather, compass heading and a QR code of the location.</p></details>
+<details><summary>Is Photocator really free?</summary><p>Yes. Photocator is free software under the GNU GPL v3.0. It has no ads, no accounts, no in-app purchases and no analytics. The full source code is on GitHub.</p></details>
+<details><summary>How do I add a geotag to photos I already have?</summary><p>Tap the add-photo button on the camera screen and select as many photos as you like from your gallery. Choose one location, from the map picker, a place search, your current position or a saved location, and the same geotag is added to all of them. Place it on the photo or in a strip below it.</p></details>
+<details><summary>Can I put a QR code of the location on my photos?</summary><p>Yes. In Settings, choose Watermark or QR code and pick QR code. Scanning it opens the exact location in any maps app. The QR code follows the location of each photo, including edits, and you can set its colour and background colour.</p></details>
+<details><summary>Can I use my own logo as a watermark?</summary><p>Yes. Upload your logos in Settings and show one in the corner of the geotag, for every photo or just a single one. A watermark and a QR code can&#x27;t be shown together, so the corner shows one or the other.</p></details>
+<details><summary>What are saved locations?</summary><p>Saved locations are places you name once, from the map or by search, and reuse on any photo. They appear under Use saved address when you edit a captured photo or add a geotag to existing photos.</p></details>
+<details><summary>Which map providers can I choose?</summary><p>Esri is the default, with satellite, streets, topographic and more. You can also switch to OpenStreetMap or OpenTopoMap in Settings, and the app then shows that provider&#x27;s map styles for you to choose from.</p></details>
+<details><summary>Does Photocator work without internet?</summary><p>The camera and GPS work offline, but the address, place name, weather and map images are fetched online. Without a connection the geotag shows your coordinates and whatever was already cached.</p></details>
+<details><summary>Does Photocator upload or store my photos?</summary><p>No. Your photos, videos and location stay on your phone. The developer does not receive any of your data. The app only sends coordinates to public map, address and weather services to build the geotag.</p></details>
+<details><summary>Which Android versions are supported?</summary><p>Photocator needs Android 8.0 (API 26) or later.</p></details>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap policy">
+    <p class="eyebrow">Specs</p>
+    <h2>At a glance</h2>
+    <table>
+      <tr><td>Platform</td><td>Android 8.0 (API 26) or later</td></tr>
+      <tr><td>Price</td><td>Free, no in-app purchases</td></tr>
+      <tr><td>License</td><td>GNU GPL v3.0, open source</td></tr>
+      <tr><td>Modes</td><td>Photo, Night, Video</td></tr>
+      <tr><td>Geotag data</td><td>Map, place, address, coordinates, Plus Code, date, weather, compass, QR code</td></tr>
+      <tr><td>Map providers</td><td>Esri, OpenStreetMap, OpenTopoMap</td></tr>
+      <tr><td>Developer</td><td>Karthik Hegde</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="privacy">
+  <div class="wrap">
+    <p class="eyebrow">Privacy policy</p>
+    <h2>Your photos stay on your phone.</h2>
+    <p class="lead">Last updated: October 2026</p>
+    <div class="policy">
+      <h3>What Photocator does not do</h3>
+      <ul>
+        <li>No accounts, no sign-in, no ads and no analytics or tracking tools.</li>
+        <li>The developer does not receive, collect or store your photos, videos, location or any personal data.</li>
+        <li>Nothing you shoot is uploaded to any server run by the developer.</li>
+      </ul>
+      <h3>Permissions and why they are needed</h3>
+      <ul>
+        <li><strong>Camera</strong> to take photos and videos.</li>
+        <li><strong>Microphone</strong> to record sound with video. Asked only when you use Video mode.</li>
+        <li><strong>Location</strong> to read your GPS position for the geotag.</li>
+        <li><strong>Photos and media</strong> to save your files, show your gallery and import existing photos.</li>
+        <li><strong>Internet</strong> for the lookups listed below.</li>
+      </ul>
+      <h3>Third-party services</h3>
+      <p>To build the geotag, the app sends your coordinates (or a place you search for) to these public services. They have their own privacy policies:</p>
+      <ul>
+        <li><strong>OpenStreetMap Nominatim and Photon</strong> turn coordinates into a place name and address, and power place search.</li>
+        <li><strong>Open-Meteo</strong> provides the weather for your coordinates.</li>
+        <li><strong>Esri, OpenStreetMap and OpenTopoMap tile servers</strong> provide the map images, depending on the map provider you choose. Tile requests reveal the map area you are viewing.</li>
+      </ul>
+      <p>Your phone's IP address is visible to these services, as with any internet request. The app does not send your photos to them. QR codes are generated on your device.</p>
+      <h3>Data on your device</h3>
+      <p>Settings, saved locations, your watermark images and cached map tiles are stored locally in the app's private storage. Photos and videos are saved in your gallery folders and can be deleted at any time. Uninstalling the app removes its private data.</p>
+      <h3>Sharing</h3>
+      <p>Your geotagged photos contain your location. Think before posting them publicly, since anyone who sees them can see where they were taken.</p>
+      <h3>Children</h3>
+      <p>Photocator does not knowingly collect any information from anyone, including children.</p>
+      <h3>Changes and contact</h3>
+      <p>If this policy changes, the updated version will be published on this page. For questions, open an issue at <a href="https://github.com/karthikhegde25/Photocator/issues">github.com/karthikhegde25/Photocator/issues</a>.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="https://github.com/karthikhegde25/Photocator">Source code</a>
+      <a href="https://github.com/karthikhegde25/Photocator/releases/tag/1.0">Releases</a>
+      <a href="https://github.com/karthikhegde25/Photocator/issues">Report an issue</a>
+      <a href="#privacy">Privacy policy</a>
+    </div>
+    <p>Photocator 1.0 · Developed by Karthik Hegde · Free software under the GNU GPL v3.0. Map imagery © Esri and its data providers, © OpenStreetMap contributors, © OpenTopoMap (CC-BY-SA). Weather by Open-Meteo.</p>
+    <p style="margin-top:8px">Android is a trademark of Google LLC. Photocator is an independent app.</p>
+  </div>
+</footer>
+</body>
+</html>

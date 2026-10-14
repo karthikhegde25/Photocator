@@ -1,0 +1,1 @@
+Geotag camera: stamps photos and videos with GPS, address, map and QR code

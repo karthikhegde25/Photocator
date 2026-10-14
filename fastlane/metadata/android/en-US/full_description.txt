@@ -1,0 +1,41 @@
+Photocator is a free, open-source geotag camera. Every photo and video you take is stamped with where and when it was shot: a map, the place name, the full address, GPS coordinates, Plus Code, date and time, and optionally weather, compass heading and a scannable QR code of the location.
+
+<b>Geotag</b>
+• Live preview of the geotag on the viewfinder, identical to what is saved
+• Map, place name, address, coordinates, Plus Code, date, time and a short note
+• Optional weather, compass heading and magnetic field
+• Resize and move the geotag, flip the map to the left or right, round or sharpen its corners
+• Edit the location, date and details before saving
+
+<b>Watermark or QR code</b>
+• Show your own logo in the corner of the geotag, or a QR code of the location, one at a time
+• The QR code opens the exact spot in any maps app and follows edits to the location
+• Choose the QR code and background colours
+
+<b>Existing photos</b>
+• Add a geotag to one or many photos from your gallery at once, all sharing one location
+• Put the geotag on the photo or in a strip below it, keeping the original resolution
+
+<b>Saved locations</b>
+• Save named places from the map or by search and reuse them on any photo
+
+<b>Maps</b>
+• Pick a location on the map or by searching for a place
+• Map providers: Esri (default), OpenStreetMap and OpenTopoMap, each with several map styles
+• Provider names are credited in the app and never stamped on your photos
+
+<b>Camera</b>
+• Photo, Night and Video modes, with a low-light video fix
+• The geotag is burned into videos too
+• Zoom dial, flash, timer, touch to capture and volume key shutter
+• Gallery-style viewer for your photos and videos with share and delete
+
+<b>Privacy</b>
+• No ads, no accounts, no analytics and no tracking
+• Your photos, videos and location stay on your device
+• The app only sends coordinates to public map, address and weather services (OpenStreetMap Nominatim and Photon, Open-Meteo and the map tile servers) to build the geotag
+• QR codes are generated on your device
+
+Photocator needs Android 8.0 or later. It is free software under the GNU GPL v3.0.
+
+Source code and issues: https://github.com/karthikhegde25/Photocator

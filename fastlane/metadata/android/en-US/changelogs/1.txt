@@ -1,0 +1,8 @@
+First release.
+
+• Geotag camera for photos and videos
+• Add a geotag to many existing photos
+• QR code or logo watermark
+• Saved locations
+• Esri, OpenStreetMap and OpenTopoMap maps
+• Night mode and low-light video

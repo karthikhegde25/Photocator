@@ -1,0 +1,99 @@
+name: Build Photocator APK
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Locate the project (unzip it first if it is still zipped)
+        id: unzip
+        run: |
+          if [ -f gradlew ]; then
+            # The codebase is already unzipped in the repository root
+            DIR=.
+          else
+            # Otherwise use the first .zip found in the repository root
+            ZIP=$(ls *.zip 2>/dev/null | head -n 1 || true)
+            if [ -z "$ZIP" ]; then
+              echo "::error::No gradlew and no .zip found in the repository root."
+              exit 1
+            fi
+            echo "Using $ZIP"
+            rm -rf _src && mkdir _src
+            unzip -q "$ZIP" -d _src
+            GRADLEW=$(find _src -maxdepth 3 -name gradlew -type f | head -n 1)
+            if [ -z "$GRADLEW" ]; then
+              echo "::error::gradlew not found inside $ZIP"
+              exit 1
+            fi
+            DIR=$(dirname "$GRADLEW")
+          fi
+          chmod +x "$DIR/gradlew"
+          echo "project_dir=$DIR" >> "$GITHUB_OUTPUT"
+          echo "Project root: $DIR"
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Prepare Android SDK (preinstalled on ubuntu-latest)
+        run: |
+          # The runner image already ships the SDK, so don't reinstall it - just
+          # accept licenses and make sure the platform/build-tools we need exist.
+          SDKMANAGER=$(find "$ANDROID_HOME/cmdline-tools" -name sdkmanager -type f | head -n 1)
+          echo "Using $SDKMANAGER"
+          yes | "$SDKMANAGER" --licenses > /dev/null || true
+          "$SDKMANAGER" "platforms;android-35" "build-tools;35.0.0" || true
+          echo "sdk.dir=$ANDROID_HOME" > "${{ steps.unzip.outputs.project_dir }}/local.properties"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Write release keystore (optional)
+        working-directory: ${{ steps.unzip.outputs.project_dir }}
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: |
+          if [ -n "$KEYSTORE_BASE64" ]; then
+            echo "$KEYSTORE_BASE64" | base64 -d > release.keystore
+            cat > keystore.properties <<EOF
+          storeFile=release.keystore
+          storePassword=$KEYSTORE_PASSWORD
+          keyAlias=$KEY_ALIAS
+          keyPassword=$KEY_PASSWORD
+          EOF
+            echo "Release keystore configured."
+          else
+            echo "No keystore secrets set - release APK will be signed with the debug key."
+          fi
+
+      - name: Build debug and release APKs
+        working-directory: ${{ steps.unzip.outputs.project_dir }}
+        run: ./gradlew assembleDebug assembleRelease --stacktrace
+
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Photocator-debug-apk
+          path: ${{ steps.unzip.outputs.project_dir }}/app/build/outputs/apk/debug/*.apk
+
+      - name: Upload release APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Photocator-release-apk
+          path: ${{ steps.unzip.outputs.project_dir }}/app/build/outputs/apk/release/*.apk
